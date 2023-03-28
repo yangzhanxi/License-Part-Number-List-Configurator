@@ -1,0 +1,4 @@
+.vscode
+webui/node_modules
+webui/dist
+webui/build

@@ -1,0 +1,37 @@
+
+.test-lib {
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 240px;
+    height: 800px;
+    background-color: #eaeaea;
+}
+
+.test-lib-title {
+    text-align: center; 
+    font-size: medium;
+    width: 220px;
+    margin: 5px;
+    padding: 5px;
+    color:rgb(44, 132, 175);
+}
+
+.control-panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 4px 2px;
+  gap: 20px;
+}
+
+  .search-bar {
+    width: 120;
+  }
+
+  .filter {
+    width: 32
+  }
+

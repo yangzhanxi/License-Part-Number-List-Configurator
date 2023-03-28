@@ -1,0 +1,18 @@
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    background: rgb(44, 132, 175);
+    width: 100%;
+    height: 45px;
+    z-index: 1001;
+  }
+
+.page-header-left-item {
+  padding: 10px;
+  align-items: center;
+  font-style: normal;
+  font-size: medium;
+  font-weight: bold;
+  color: white;
+  border-right: 1px solid #ffffff ;
+}

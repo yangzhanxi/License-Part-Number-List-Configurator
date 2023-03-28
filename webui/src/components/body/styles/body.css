@@ -1,0 +1,5 @@
+.page-body {
+    display: flex;
+    flex-direction: row;
+    min-height: 820px;
+}
