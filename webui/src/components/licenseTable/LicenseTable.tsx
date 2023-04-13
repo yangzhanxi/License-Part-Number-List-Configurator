@@ -10,19 +10,15 @@ const columns: TableNativeColumn[] = [
     },
     {
         align: 'center',
-        content: 'Scenario',
+        content: 'Product Name',
     },
     {
         align: 'center',
-        content: 'Sub Domain',
+        content: 'List Price',
     },
     {
         align: 'center',
-        content: 'Domain',
-    },
-    {
-        align: 'center',
-        content: 'Price',
+        content: 'Description',
     }
 ];
 
@@ -30,10 +26,6 @@ const rows: TableNativeRow[] = [
     {
         id: '1',
         cells: [
-            {
-                value: 1,
-                content: 1
-            },
             {
                 value:2,
                 content:2
@@ -51,7 +43,6 @@ const rows: TableNativeRow[] = [
                 content:4
             }
         ]
-        
     }
 ]
 

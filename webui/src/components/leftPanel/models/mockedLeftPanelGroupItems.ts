@@ -5,78 +5,105 @@ import LeftPanelSubgroupModel from "./leftPanelSubGroupModel"
 import { LeftPanelGroupItemModel } from "./leftPanelGroupItemModel"
 
 const mockedTest1 = new LeftPanelGroupItemModel({
-    id: 'group1-subgroup1-test1',
-    name: 'test1',
+    id: 'routting-and-mpls-is-is-srv6',
+    name: 'IS-IS SRv6',
     isSelected: false,
     price: 1
 })
 
 
 const mockedTest2 = new LeftPanelGroupItemModel({
-    id: 'group1-subgroup1-test2',
-    name: 'test1',
+    id: 'sdn-pcep-pcc',
+    name: 'PCC',
     isSelected: false,
     price: 2
 })
 
 
 const mockedTest3 = new LeftPanelGroupItemModel({
-    id: 'group1-subgroup2-test3',
-    name: 'test1',
+    id: 'sdn-pcep-pce',
+    name: 'PCE',
     isSelected: false,
-    price: 3
-})
-
-const mockedTest4 = new LeftPanelGroupItemModel({
-    id: 'group2-subgroup3-test4',
-    name: 'test4',
-    isSelected: false,
-    price: 1
+    price: 2
 })
 
 const mockedSubGroup1 = new LeftPanelSubgroupModel({
-    id: 'group1-subgroup1',
-    name: 'subgroup1',
+    id: 'routting-and-mpls-is-is',
+    name: 'IS-IS',
     items: List([
         mockedTest1,
-        mockedTest2
     ])
 })
 
 const mockedSubGroup2 = new LeftPanelSubgroupModel({
-    id: 'group1-subgroup2',
-    name: 'subgroup2',
+    id: 'sdn-pcep',
+    name: 'PCEP',
     items: List([
+        mockedTest2,
         mockedTest3
     ])
 })
 
-const mockedSubGroup3 = new LeftPanelSubgroupModel({
-    id: 'group2-subgroup3',
-    name: 'subgroup3',
-    items: List([
-        mockedTest4
-    ])
-})
-
 const mockedGroup1 = new LeftPanelGroupModel({
-    id: 'group1',
-    name: 'group1',
+    id: 'routting-and-mpls',
+    name: 'Routting and MPLS',
     subgroups: List([
-        mockedSubGroup1,
-        mockedSubGroup2
+        mockedSubGroup1
     ])
 })
 
 const mockedGroup2 = new LeftPanelGroupModel({
-    id: 'group2',
-    name: 'group2',
+    id: 'sdn',
+    name: 'SDN',
     subgroups: List([
-        mockedSubGroup3
+        mockedSubGroup2
     ])
 })
 
+const mockedGroup3 = new LeftPanelGroupModel({
+    id: 'tsn',
+    name: 'TSN',
+    subgroups: List([])
+})
+
+const mockedGroup4 = new LeftPanelGroupModel({
+    id: 'access',
+    name: 'Access',
+    subgroups: List([])
+})
+
+const mockedGroup5 = new LeftPanelGroupModel({
+    id: 'app-layer-pro',
+    name: 'Application Layer Protocols',
+    subgroups: List([])
+})
+
+const mockedGroup6 = new LeftPanelGroupModel({
+    id: 'carrier-ethernet',
+    name: 'Carrier Ethernet',
+    subgroups: List([])
+})
+
+const mockedGroup7 = new LeftPanelGroupModel({
+    id: 'event-manager',
+    name: 'Event Manager',
+    subgroups: List([])
+})
+
+const mockedGroup8 = new LeftPanelGroupModel({
+    id: 'iot',
+    name: 'Iot',
+    subgroups: List([])
+})
+
+
 export const mockedGroupsItems = List([
     mockedGroup1,
-    mockedGroup2
+    mockedGroup2,
+    mockedGroup3,
+    mockedGroup4,
+    mockedGroup5,
+    mockedGroup6,
+    mockedGroup7,
+    mockedGroup8,
 ])

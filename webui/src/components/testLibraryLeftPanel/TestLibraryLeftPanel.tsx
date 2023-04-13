@@ -11,7 +11,7 @@ import { LeftPanelCollapseAll } from '../leftPanelCollapseAll/LeftPanelCollapseA
 import { LeftPanelItem } from '../leftPanel/LeftPanelItem';
 import { LeftPanelGroup } from '../leftPanel/LeftPanelGroup';
 
-import { onAllCollapseToggled } from './TestLibraryLeftPanelSlice';
+import { onAllCollapseToggled, onGroupToggled, onSubGroupToggled} from './TestLibraryLeftPanelSlice';
 import { areAllGroupsExpandedSelector } from 'components/leftPanelCollapseAll/LeftPanelCollapseAllSelector';
 import LeftPanelGroupModel from 'components/leftPanel/models/leftPanelGroupModel';
 import LeftPanelSubgroupModel from 'components/leftPanel/models/leftPanelSubGroupModel';
@@ -20,10 +20,10 @@ import { LeftPanelGroupItemModel } from 'components/leftPanel/models/leftPanelGr
 
 export const TestLibraryLeftPanel: React.FC<{
 }> = () => {
-    const {areAllGroupsExpanded} = useAppSelector(areAllGroupsExpandedSelector)
+    const {areAllGroupsExpanded, expandedGroupIds, expandedSubGroupIds} = useAppSelector(areAllGroupsExpandedSelector)
     const dispatch = useAppDispatch()
 
-    const onGroupToggled = () => {}
+    // const onGroupToggled = () => {}
 
     const renderGroupItems = (items: List<LeftPanelGroupItemModel>) => {
         return items.map(
@@ -48,8 +48,8 @@ export const TestLibraryLeftPanel: React.FC<{
                 return (
                     <LeftPanelGroup key={id}
                                     text={text}
-                                    isExpanded={true}
-                                    onToggle={() => onGroupToggled()}
+                                    isExpanded={expandedSubGroupIds.has(id)}
+                                    onToggle={() => dispatch(onSubGroupToggled(id))}
                                     isSecondary={true}>
                         {renderGroupItems(items)}
                     </LeftPanelGroup>
@@ -65,12 +65,12 @@ export const TestLibraryLeftPanel: React.FC<{
                 // const shouldRenderSubgroups = !subgroups.isEmpty();
                 const shouldRenderSubgroups = true;
                 const text = `${name} (${group.subgroups.size})`;
-
+                console.log(expandedGroupIds)
                 return (
                     <LeftPanelGroup key={id}
                                     text={text}
-                                    isExpanded={true}
-                                    onToggle={() => onGroupToggled()}>
+                                    isExpanded={expandedGroupIds.has(id)}
+                                    onToggle={() => dispatch(onGroupToggled(id))}>
                         {shouldRenderSubgroups ? renderSubgroups(subgroups) : renderGroupItems(items)}
                     </LeftPanelGroup>
                 );
@@ -80,7 +80,7 @@ export const TestLibraryLeftPanel: React.FC<{
 
     const renderLeftPanelCollapseAll =
             <LeftPanelCollapseAll areExpanded={areAllGroupsExpanded}
-                                  onToggle={() => dispatch(onAllCollapseToggled({areExpanded: !areAllGroupsExpanded}))}/>
+                                  onToggle={() => dispatch(onAllCollapseToggled(!areAllGroupsExpanded))}/>
 
     return (
         <VerticalScrollableContent header={renderLeftPanelCollapseAll}>

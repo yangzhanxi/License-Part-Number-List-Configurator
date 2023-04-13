@@ -11,7 +11,7 @@ import { LicenseTable } from 'components/licenseTable/LicenseTable';
 import './styles/license-block.css'
 
 export const LicenseBlock: React.FC = () => {
-    const [activeButton, setActiveButton] = React.useState('Show Licenses');
+    // const [activeButton, setActiveButton] = React.useState('Show Licenses');
 
     const headerLeft =
         <div className='license-block-header-left'>
@@ -20,20 +20,20 @@ export const LicenseBlock: React.FC = () => {
             </span>
         </div>
 
-    const items = ['Show  Licenses', 'Show Avaliable Bundle'].map(
-        text => ({
-            text,
-            id: text,
-            isActive: activeButton === text,
-            onClick: () => setActiveButton(text),
-        }),
-    );
+    // const items = ['Show  Licenses', 'Show Avaliable Bundle'].map(
+    //     text => ({
+    //         text,
+    //         id: text,
+    //         isActive: activeButton === text,
+    //         onClick: () => setActiveButton(text),
+    //     }),
+    // );
 
     const buttonPanel =
         <div className='license-block-button-panel'>
-            <div>
+            {/* <div>
                 <ToggleButton items={items}/>
-            </div>
+            </div> */}
             <div id='export' className='license-block-button'>
                 <Button text='Export'
                         size={ButtonParams.Size.MEDIUM}
