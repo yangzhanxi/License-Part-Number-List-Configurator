@@ -11,16 +11,20 @@ import { LeftPanelCollapseAll } from '../leftPanelCollapseAll/LeftPanelCollapseA
 import { LeftPanelItem } from '../leftPanel/LeftPanelItem';
 import { LeftPanelGroup } from '../leftPanel/LeftPanelGroup';
 
-import { onAllCollapseToggled, onGroupToggled, onSubGroupToggled} from './TestLibraryLeftPanelSlice';
+import { onAllCollapseToggled, onGroupToggled, onSolutionIdsToggled, onSubGroupToggled} from './TestLibraryLeftPanelSlice';
 import { areAllGroupsExpandedSelector } from 'components/leftPanelCollapseAll/LeftPanelCollapseAllSelector';
 import LeftPanelGroupModel from 'components/leftPanel/models/leftPanelGroupModel';
 import LeftPanelSubgroupModel from 'components/leftPanel/models/leftPanelSubGroupModel';
-import { mockedGroupsItems } from 'components/leftPanel/models/mockedLeftPanelGroupItems';
+import { mockedGroupsItems } from 'mocks/mockedLeftPanelGroupItems';
 import { LeftPanelGroupItemModel } from 'components/leftPanel/models/leftPanelGroupItemModel';
 
 export const TestLibraryLeftPanel: React.FC<{
 }> = () => {
-    const {areAllGroupsExpanded, expandedGroupIds, expandedSubGroupIds} = useAppSelector(areAllGroupsExpandedSelector)
+    const {
+        areAllGroupsExpanded,
+        expandedGroupIds,
+        expandedSubGroupIds,
+        selectedSolutionIds} = useAppSelector(areAllGroupsExpandedSelector)
     const dispatch = useAppDispatch()
 
     // const onGroupToggled = () => {}
@@ -29,11 +33,15 @@ export const TestLibraryLeftPanel: React.FC<{
         return items.map(
             item => {
                 const {id, name, isSelected} = item
-                
+
                 return (
-                    <LeftPanelItem key={id}
-                                   testName={name}
-                                   isSelected={isSelected}/>
+                    <div >
+                        <LeftPanelItem key={id}
+                                       isSelected={selectedSolutionIds.has(id)}
+                                       solutionName={name}
+                                       solutionId={id}
+                                       onSolutionToggled={() => dispatch(onSolutionIdsToggled(id))}/>
+                    </div>
                 )
             }
         )

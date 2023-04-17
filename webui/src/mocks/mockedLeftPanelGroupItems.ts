@@ -1,12 +1,33 @@
 import {List} from 'immutable'
 
-import LeftPanelGroupModel from "./leftPanelGroupModel"
-import LeftPanelSubgroupModel from "./leftPanelSubGroupModel"
-import { LeftPanelGroupItemModel } from "./leftPanelGroupItemModel"
+import LeftPanelGroupModel from "../components/leftPanel/models/leftPanelGroupModel"
+import LeftPanelSubgroupModel from "../components/leftPanel/models/leftPanelSubGroupModel"
+import { LeftPanelGroupItemModel } from "../components/leftPanel/models/leftPanelGroupItemModel"
 
 const mockedTest1 = new LeftPanelGroupItemModel({
     id: 'routting-and-mpls-is-is-srv6',
     name: 'IS-IS SRv6',
+    isSelected: false,
+    price: 1
+})
+
+const mockedTest4 = new LeftPanelGroupItemModel({
+    id: 'routting-and-mpls-is-is-ipv4',
+    name: 'IS-IS IPv4',
+    isSelected: false,
+    price: 1
+})
+
+const mockedTest5 = new LeftPanelGroupItemModel({
+    id: 'routting-and-mpls-is-is-ipv6',
+    name: 'IS-IS IPv6',
+    isSelected: false,
+    price: 1
+})
+
+const mockedTest6 = new LeftPanelGroupItemModel({
+    id: 'routting-and-mpls-is-is-mpls',
+    name: 'IS-IS MPLS',
     isSelected: false,
     price: 1
 })
@@ -32,6 +53,9 @@ const mockedSubGroup1 = new LeftPanelSubgroupModel({
     name: 'IS-IS',
     items: List([
         mockedTest1,
+        mockedTest4,
+        mockedTest5,
+        mockedTest6
     ])
 })
 

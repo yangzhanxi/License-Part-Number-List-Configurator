@@ -1,5 +1,6 @@
 // import {List, Set} from 'immutable';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { group } from 'console';
 import { enableMapSet } from 'immer';
 
 enableMapSet();
@@ -7,12 +8,14 @@ interface State {
   areAllGroupsExpanded: boolean;
   expandedGroupIds: Set<string>;
   expandedSubGroupIds: Set<string>;
+  selectedSolutionIds: Set<string>;
 }
 
 const DEFAULT_STATE: State = {
   areAllGroupsExpanded: false,
   expandedGroupIds: new Set(),
-  expandedSubGroupIds: new Set()
+  expandedSubGroupIds: new Set(),
+  selectedSolutionIds: new Set()
 };
 
 const TestDomainLeftPanelSlice = createSlice({
@@ -44,14 +47,29 @@ const TestDomainLeftPanelSlice = createSlice({
       )
 
       state.expandedSubGroupIds = groupIds
+    },
+
+    onSolutionIdsToggled: (state, action: PayloadAction<string>) => {
+      const solutionIds = new Set(state.selectedSolutionIds)
+
+      if (solutionIds.has(action.payload)) {
+        solutionIds.delete(action.payload)
+      } else {
+        solutionIds.add(action.payload)
+      }
+
+      state.selectedSolutionIds = solutionIds
+      console.log(state.selectedSolutionIds)
     }
+
   }
 })
 
 export const {
   onAllCollapseToggled,
   onGroupToggled,
-  onSubGroupToggled
+  onSubGroupToggled,
+  onSolutionIdsToggled
 } = TestDomainLeftPanelSlice.actions;
 
 export default TestDomainLeftPanelSlice.reducer;
