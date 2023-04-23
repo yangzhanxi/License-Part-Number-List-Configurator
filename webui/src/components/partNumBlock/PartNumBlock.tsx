@@ -8,14 +8,14 @@ import {
 
 import {useAppSelector, useAppDispatch} from 'store/hooks';
 import { PartNumTab } from 'components/partNumTab/PartNumTab';
-import { areAllGroupsExpandedSelector } from 'components/leftPanelCollapseAll/LeftPanelCollapseAllSelector';
+import { leftPanelSelector } from 'components/leftPanel/Left Panel Selector';
 import { generateBundleRows, generateTableRows } from 'components/PartNumTable/PratNumTableUtils';
 import {onClearSolutionIds} from 'components/testLibraryLeftPanel/TestLibraryLeftPanelSlice';
 
 import './styles/part-number-block.css'
 
 export const PartNumBlock: React.FC = () => {
-    const {selectedSolutionIds} = useAppSelector(areAllGroupsExpandedSelector);
+    const {selectedSolutionIds} = useAppSelector(leftPanelSelector);
     const [partNums, setPartNums] = React.useState<TableNativeRow[]>([])
     const [bundlePartNums, setBundlePartNums] = React.useState<TableNativeRow[]>([])
     const dispatch = useAppDispatch()

@@ -1,6 +1,8 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { enableMapSet } from 'immer';
 
+import { allGroupIds, allSubGroupIds } from 'components/leftPanel/Left Panel Selector';
+
 enableMapSet();
 interface State {
   areAllGroupsExpanded: boolean;
@@ -22,6 +24,13 @@ const TestDomainLeftPanelSlice = createSlice({
   reducers: {
     onAllCollapseToggled: (state, action: PayloadAction<boolean>) => {
       state.areAllGroupsExpanded = action.payload
+      if (state.areAllGroupsExpanded) {
+        state.expandedGroupIds = allGroupIds
+        state.expandedSubGroupIds = allSubGroupIds
+      } else {
+        state.expandedGroupIds.clear()
+        state.expandedSubGroupIds.clear()
+      }
     },
     onGroupToggled: (state, action: PayloadAction<string>) => {
       const groupIds = new Set(state.expandedGroupIds)

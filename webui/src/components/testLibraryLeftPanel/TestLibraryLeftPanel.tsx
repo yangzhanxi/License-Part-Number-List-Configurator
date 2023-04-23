@@ -12,8 +12,7 @@ import { LeftPanelItem } from '../leftPanel/LeftPanelItem';
 import { LeftPanelGroup } from '../leftPanel/LeftPanelGroup';
 
 import { onAllCollapseToggled, onGroupToggled, onSolutionIdsToggled, onSubGroupToggled} from './TestLibraryLeftPanelSlice';
-import { areAllGroupsExpandedSelector } from 'components/leftPanelCollapseAll/LeftPanelCollapseAllSelector';
-import LeftPanelGroupModel from 'components/leftPanel/models/leftPanelGroupModel';
+import { leftPanelSelector } from 'components/leftPanel/Left Panel Selector';
 import LeftPanelSubgroupModel from 'components/leftPanel/models/leftPanelSubGroupModel';
 import { mockedGroupsItems } from 'mocks/mockedLeftPanelGroupItems';
 import { LeftPanelGroupItemModel } from 'components/leftPanel/models/leftPanelGroupItemModel';
@@ -26,7 +25,7 @@ export const TestLibraryLeftPanel: React.FC<{
         areAllGroupsExpanded,
         expandedGroupIds,
         expandedSubGroupIds,
-        selectedSolutionIds} = useAppSelector(areAllGroupsExpandedSelector)
+        selectedSolutionIds} = useAppSelector(leftPanelSelector)
     const dispatch = useAppDispatch()
 
     // const onGroupToggled = () => {}
