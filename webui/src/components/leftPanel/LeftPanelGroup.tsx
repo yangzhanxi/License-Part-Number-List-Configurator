@@ -2,7 +2,6 @@ import React, {PureComponent} from 'react';
 import {CollapsibleContent} from 'orion-rwc';
 import SVG from 'react-inlinesvg';
 
-
 import './styles/left-panel-group.css';
 
 import CollapsedIcon from '../../icons/Collapsed.svg'

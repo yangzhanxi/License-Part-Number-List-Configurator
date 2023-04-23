@@ -1,4 +1,4 @@
-.license-block {
+.part-number-block {
     margin-top: 5px;
     margin-right: 5px;
     display: flex;
@@ -7,7 +7,7 @@
     height: 100%;
 }
 
-.license-block-header {
+.part-number-block-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -17,24 +17,24 @@
     height: 50px;
 }
 
-.license-block-header-left {
+.part-number-block-header-left {
     padding-left: 10px;
     font-size: 16px;
     font-weight: 500;
 }
 
-.license-block-button-panel {
+.part-number-block-button-panel {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 
-.license-block-button {
+.part-number-block-button {
     padding: 0 5px;
     width: 140px;
 }
 
-.license-table {
+.part-number-table {
     height: 100%;
 }

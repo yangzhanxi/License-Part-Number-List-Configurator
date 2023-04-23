@@ -42,7 +42,7 @@ export const TestLibrary: React.FC = () => {
     const renderTitle = (
         <div className='test-lib-title'>
             <span>
-                Test Library
+                Solutions
             </span>
         </div>
     )

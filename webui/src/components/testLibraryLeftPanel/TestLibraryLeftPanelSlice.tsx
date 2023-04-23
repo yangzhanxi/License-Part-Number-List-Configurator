@@ -1,6 +1,4 @@
-// import {List, Set} from 'immutable';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { group } from 'console';
 import { enableMapSet } from 'immer';
 
 enableMapSet();
@@ -59,7 +57,10 @@ const TestDomainLeftPanelSlice = createSlice({
       }
 
       state.selectedSolutionIds = solutionIds
-      console.log(state.selectedSolutionIds)
+    },
+
+    onClearSolutionIds: (state) => {
+      state.selectedSolutionIds = new Set()
     }
 
   }
@@ -69,7 +70,8 @@ export const {
   onAllCollapseToggled,
   onGroupToggled,
   onSubGroupToggled,
-  onSolutionIdsToggled
+  onSolutionIdsToggled,
+  onClearSolutionIds
 } = TestDomainLeftPanelSlice.actions;
 
 export default TestDomainLeftPanelSlice.reducer;

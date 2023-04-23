@@ -18,6 +18,8 @@ import LeftPanelSubgroupModel from 'components/leftPanel/models/leftPanelSubGrou
 import { mockedGroupsItems } from 'mocks/mockedLeftPanelGroupItems';
 import { LeftPanelGroupItemModel } from 'components/leftPanel/models/leftPanelGroupItemModel';
 
+import './styles/test-lib-left-panel.css'
+
 export const TestLibraryLeftPanel: React.FC<{
 }> = () => {
     const {
@@ -32,7 +34,7 @@ export const TestLibraryLeftPanel: React.FC<{
     const renderGroupItems = (items: List<LeftPanelGroupItemModel>) => {
         return items.map(
             item => {
-                const {id, name, isSelected} = item
+                const {id, name} = item
 
                 return (
                     <div >
@@ -54,13 +56,13 @@ export const TestLibraryLeftPanel: React.FC<{
                 const text = `${name} (${group.items.size})`
 
                 return (
-                    <LeftPanelGroup key={id}
-                                    text={text}
-                                    isExpanded={expandedSubGroupIds.has(id)}
-                                    onToggle={() => dispatch(onSubGroupToggled(id))}
-                                    isSecondary={true}>
-                        {renderGroupItems(items)}
-                    </LeftPanelGroup>
+                        <LeftPanelGroup key={id}
+                                        text={text}
+                                        isExpanded={expandedSubGroupIds.has(id)}
+                                        onToggle={() => dispatch(onSubGroupToggled(id))}
+                                        isSecondary={true}>
+                            {renderGroupItems(items)}
+                        </LeftPanelGroup>
                 )
             }
         )
@@ -73,14 +75,15 @@ export const TestLibraryLeftPanel: React.FC<{
                 // const shouldRenderSubgroups = !subgroups.isEmpty();
                 const shouldRenderSubgroups = true;
                 const text = `${name} (${group.subgroups.size})`;
-                console.log(expandedGroupIds)
                 return (
-                    <LeftPanelGroup key={id}
-                                    text={text}
-                                    isExpanded={expandedGroupIds.has(id)}
-                                    onToggle={() => dispatch(onGroupToggled(id))}>
-                        {shouldRenderSubgroups ? renderSubgroups(subgroups) : renderGroupItems(items)}
-                    </LeftPanelGroup>
+                    <div className='test-lib-left-panel'>
+                        <LeftPanelGroup key={id}
+                                        text={text}
+                                        isExpanded={expandedGroupIds.has(id)}
+                                        onToggle={() => dispatch(onGroupToggled(id))}>
+                            {shouldRenderSubgroups ? renderSubgroups(subgroups) : renderGroupItems(items)}
+                        </LeftPanelGroup>
+                    </div>
                 );
             }
         )

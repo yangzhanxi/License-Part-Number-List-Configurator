@@ -1,0 +1,6 @@
+.test-lib-left-panel {
+    border: 1px solid #cccccc;
+    border-right: 0;
+    border-left: 0;
+    background: #818c94;
+}

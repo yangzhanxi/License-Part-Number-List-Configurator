@@ -1,0 +1,5 @@
+.port_num_row {
+    border-right: 1px solid var(--rwc-light-gray-color);
+    height: 100%;
+    word-wrap:normal；
+}

@@ -13,8 +13,6 @@ export const LeftPanelItem: React.FC<{
     isSelected: boolean,
     onSolutionToggled: (id: string) => void
 }> = ({solutionName, isSelected, solutionId, onSolutionToggled})  => {
-    // const [solutionName, setCheckboxState] = React.useState(CheckboxParams.State.UNCHECKED);
-
     const renderCheckbox =
         <div className='item-checkbox'>
             <Checkbox checkboxState={isSelected? CheckboxParams.State.CHECKED : CheckboxParams.State.UNCHECKED}

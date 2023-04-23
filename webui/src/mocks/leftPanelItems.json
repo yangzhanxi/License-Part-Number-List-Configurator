@@ -1,0 +1,86 @@
+{
+    "domains": [
+        {
+            "Access": {
+                "id": "access"
+
+            }
+        },
+        {
+            "Application Layer Protocols": {
+
+            }
+        },
+        {
+            "Carrler Ethernet": {
+
+            }
+        },
+        {
+            "Event Manater": {
+
+            }
+        },
+        {
+            "Event Manater": {
+
+            }
+        },
+        {
+            "IOT": {
+
+            }
+        },
+        {
+            "Routing and MPLS": {
+                "protocols": {
+                    "BGP": {
+                    },
+                    "IS-IS": {
+                        "solutions": [
+                            "IS-IS IPv4",
+                            "IS-IS IPv6",
+                            "IS-IS SR MPLS",
+                            "IS-IS SRv6"
+                        ]
+                    },
+                    "OSPFv2": {
+                    },
+                    "OSPFv3": {
+                    },
+                    "PIM": {
+                    },
+                    "RIP": {
+                    }
+                }
+    
+            }
+        },
+        {
+            "SDN": {
+                "protocols": {
+                    "Netconf": {
+    
+                    },
+                    "PCEP": {
+                        "solutions": [
+                            "PCC",
+                            "PCE"
+                        ]
+                    },
+                    "SRv6 OAM": {
+    
+                    },
+                    "BGP-LS": {
+                    }
+                }
+            }
+        },
+        {
+
+            "TSN": {
+
+            }
+        }
+    ]
+}

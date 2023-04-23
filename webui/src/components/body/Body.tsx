@@ -1,11 +1,12 @@
 import './styles/body.css';
 import { TestLibrary } from '../testLibrary/TestLibrary';
-import { LicenseBlock } from '../licenseBlock/LicenseBlock';
+
+import { PartNumBlock } from 'components/partNumBlock/PartNumBlock';
 export const Body: React.FC = () => {
     return (
         <div className='page-body'>
             <TestLibrary/>
-            <LicenseBlock/>
+            <PartNumBlock/>
         </div>
     )
 }
