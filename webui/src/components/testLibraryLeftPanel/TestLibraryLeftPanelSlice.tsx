@@ -9,13 +9,15 @@ interface State {
   expandedGroupIds: Set<string>;
   expandedSubGroupIds: Set<string>;
   selectedSolutionIds: Set<string>;
+  searchString: string;
 }
 
 const DEFAULT_STATE: State = {
   areAllGroupsExpanded: false,
   expandedGroupIds: new Set(),
   expandedSubGroupIds: new Set(),
-  selectedSolutionIds: new Set()
+  selectedSolutionIds: new Set(),
+  searchString: ''
 };
 
 const TestDomainLeftPanelSlice = createSlice({
@@ -70,6 +72,10 @@ const TestDomainLeftPanelSlice = createSlice({
 
     onClearSolutionIds: (state) => {
       state.selectedSolutionIds = new Set()
+    },
+
+    onSearchStringChanged: (state, action: PayloadAction<string>) => {
+      state.searchString = action.payload
     }
 
   }
@@ -80,7 +86,8 @@ export const {
   onGroupToggled,
   onSubGroupToggled,
   onSolutionIdsToggled,
-  onClearSolutionIds
+  onClearSolutionIds,
+  onSearchStringChanged
 } = TestDomainLeftPanelSlice.actions;
 
 export default TestDomainLeftPanelSlice.reducer;

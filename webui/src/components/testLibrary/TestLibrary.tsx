@@ -4,31 +4,38 @@ import{
     SearchBar,
 } from 'orion-rwc';
 import React from 'react';
+
+import {useAppSelector, useAppDispatch} from 'store/hooks';
+import { leftPanelSelector } from 'components/leftPanel/Left Panel Selector';
 import { TestLibraryLeftPanel } from 'components/testLibraryLeftPanel/TestLibraryLeftPanel';
+import { onSearchStringChanged } from 'components/testLibraryLeftPanel/TestLibraryLeftPanelSlice'
 import './styles/test-lib.css'
 
 
 export const TestLibrary: React.FC = () => {
-    const onSearchChanged = () => {
-        console.log('on changed')
+    const {searchString} = useAppSelector(leftPanelSelector);
+    const dispatch = useAppDispatch();
+    const searchChanged = (value: string) => {
+        dispatch(onSearchStringChanged(value))
     }
 
     const renderSearchBar = (
         <div className='search-bar'>
-            <SearchBar placeholder={'Seach Test by Name'}
+            <SearchBar value={searchString}
+                       placeholder={'Search by Name'}
                        isClearIcon={true}
                        isInputRounded={true}
-                       onValueChanged={onSearchChanged}/>
+                       onValueChanged={searchChanged}/>
         </div>
     )
 
     const items: FilterItem[] = [];
-
+    const change = () => {}
     const renderFilter = (
         <div className='filter'>
             <Filter maxHeight='500px'
                     items={items}
-                    onItemClick={onSearchChanged}/>
+                    onItemClick={change}/>
         </div>
     )
 

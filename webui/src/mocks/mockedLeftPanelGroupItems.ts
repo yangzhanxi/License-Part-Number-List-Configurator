@@ -1,5 +1,8 @@
 import {List} from 'immutable'
 
+import {useAppSelector, useAppDispatch} from 'store/hooks';
+import { isMatching } from 'utils/string_utils'
+import { leftPanelSelector } from 'components/leftPanel/Left Panel Selector';
 import LeftPanelGroupModel from "../components/leftPanel/models/leftPanelGroupModel"
 import LeftPanelSubgroupModel from "../components/leftPanel/models/leftPanelSubGroupModel"
 import { LeftPanelGroupItemModel } from "../components/leftPanel/models/leftPanelGroupItemModel"
@@ -131,3 +134,20 @@ export const mockedGroupsItems = List([
     mockedGroup7,
     mockedGroup8,
 ])
+
+export const generateGroupItems = (searchString: string) => {
+
+    if (isMatching(searchString, 'is')) {
+        return List([
+            mockedGroup1
+        ])
+    }
+
+    if (isMatching(searchString, 'pc')) {
+        return List([
+            mockedGroup2
+        ])
+    }
+
+        return mockedGroupsItems
+}

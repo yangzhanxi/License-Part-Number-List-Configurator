@@ -6,16 +6,17 @@ import {
 import React from 'react';
 
 import {useAppSelector, useAppDispatch} from 'store/hooks';
-
-import { LeftPanelCollapseAll } from '../leftPanelCollapseAll/LeftPanelCollapseAll';
-import { LeftPanelItem } from '../leftPanel/LeftPanelItem';
-import { LeftPanelGroup } from '../leftPanel/LeftPanelGroup';
+import { isMatching } from 'utils/string_utils'
 
 import { onAllCollapseToggled, onGroupToggled, onSolutionIdsToggled, onSubGroupToggled} from './TestLibraryLeftPanelSlice';
 import { leftPanelSelector } from 'components/leftPanel/Left Panel Selector';
 import LeftPanelSubgroupModel from 'components/leftPanel/models/leftPanelSubGroupModel';
-import { mockedGroupsItems } from 'mocks/mockedLeftPanelGroupItems';
+import { generateGroupItems } from 'mocks/mockedLeftPanelGroupItems';
 import { LeftPanelGroupItemModel } from 'components/leftPanel/models/leftPanelGroupItemModel';
+import { LeftPanelCollapseAll } from '../leftPanelCollapseAll/LeftPanelCollapseAll';
+import LeftPanelGroupModel from "components/leftPanel/models/leftPanelGroupModel"
+import { LeftPanelItem } from '../leftPanel/LeftPanelItem';
+import { LeftPanelGroup } from '../leftPanel/LeftPanelGroup';
 
 import './styles/test-lib-left-panel.css'
 
@@ -25,10 +26,10 @@ export const TestLibraryLeftPanel: React.FC<{
         areAllGroupsExpanded,
         expandedGroupIds,
         expandedSubGroupIds,
-        selectedSolutionIds} = useAppSelector(leftPanelSelector)
+        selectedSolutionIds,
+        searchString
+    } = useAppSelector(leftPanelSelector)
     const dispatch = useAppDispatch()
-
-    // const onGroupToggled = () => {}
 
     const renderGroupItems = (items: List<LeftPanelGroupItemModel>) => {
         return items.map(
@@ -36,7 +37,7 @@ export const TestLibraryLeftPanel: React.FC<{
                 const {id, name} = item
 
                 return (
-                    <div >
+                    <div>
                         <LeftPanelItem key={id}
                                        isSelected={selectedSolutionIds.has(id)}
                                        solutionName={name}
@@ -68,7 +69,8 @@ export const TestLibraryLeftPanel: React.FC<{
     }
 
     const renderGroups = () => {
-        return mockedGroupsItems.map(
+        const groupItems = generateGroupItems(searchString)
+        return groupItems.map(
             group => {
                 const {id, subgroups, name, items} = group;
                 // const shouldRenderSubgroups = !subgroups.isEmpty();
