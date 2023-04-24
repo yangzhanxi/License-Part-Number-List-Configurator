@@ -46,20 +46,20 @@ export const PartNumBlock: React.FC = () => {
     const headerLeft =
         <div className='part-number-block-header-left'>
             <span>
-                Part Numbers
+                {/* Part Numbers */}
             </span>
         </div>
 
 const items = List.of<ToggleButtonItem>(
     {
-        id: 'local',
-        text: 'Local',
+        id: 'flexera',
+        text: 'Flexera',
         isActive: true,
         onClick: () => {}
     },
     {
-        id: 'orion',
-        text: 'Orion',
+        id: 'aion',
+        text: 'AION',
         isActive: false,
         isDisabled: true,
         onClick: () => {}

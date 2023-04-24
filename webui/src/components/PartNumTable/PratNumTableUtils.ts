@@ -4,7 +4,7 @@ import {
 
 
 const solutionPartNumMap: Map<string, Set<string>> = new Map([
-    ['routting-and-mpls-is-is-ipv6', new Set<string>(['bpk-1345', 'bpk-1004b'])],
+    ['routting-and-mpls-is-is-srv6', new Set<string>(['bpk-1345', 'bpk-1004b'])],
     ['sdn-pcep-pcc', new Set<string>(['bpk-1316a'])],
     ['sdn-pcep-pce', new Set<string>(['bpk-1315a'])]
 ])
