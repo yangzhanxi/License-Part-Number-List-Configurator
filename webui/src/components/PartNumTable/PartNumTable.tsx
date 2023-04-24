@@ -1,5 +1,4 @@
-import {List} from 'immutable';
-import { TableNative, TableNativeColumn, TableNativeRow, Table } from 'orion-rwc';
+import { TableNative, TableNativeColumn, TableNativeRow } from 'orion-rwc';
 
 import React from 'react';
 

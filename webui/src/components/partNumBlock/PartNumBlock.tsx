@@ -1,32 +1,37 @@
-import React, { useState } from 'react';
+import React from 'react';
+import {List} from 'immutable';
 
 import {
     Button,
     ButtonParams,
-    TableNativeRow
+    TableNativeRow,
+    ToggleButton,
+    ToggleButtonItem
 } from 'orion-rwc'
 
 import {useAppSelector, useAppDispatch} from 'store/hooks';
-import { PartNumTab } from 'components/partNumTab/PartNumTab';
+import { PartNumTable } from 'components/PartNumTable/PartNumTable';
+// import { PartNumTab } from 'components/partNumTab/PartNumTab';
 import { leftPanelSelector } from 'components/leftPanel/Left Panel Selector';
-import { generateBundleRows, generateTableRows } from 'components/PartNumTable/PratNumTableUtils';
+import { generateTableRows } from 'components/PartNumTable/PratNumTableUtils';
 import {onClearSolutionIds} from 'components/testLibraryLeftPanel/TestLibraryLeftPanelSlice';
 
-import './styles/part-number-block.css'
+import './styles/part-number-block.css';
 
 export const PartNumBlock: React.FC = () => {
     const {selectedSolutionIds} = useAppSelector(leftPanelSelector);
     const [partNums, setPartNums] = React.useState<TableNativeRow[]>([])
-    const [bundlePartNums, setBundlePartNums] = React.useState<TableNativeRow[]>([])
+    // const [bundlePartNums, setBundlePartNums] = React.useState<TableNativeRow[]>([])
     const dispatch = useAppDispatch()
+
     const onGenerateClick = (ids: Set<string>) => {
         setPartNums(generateTableRows(ids));
-        setBundlePartNums(generateBundleRows(ids));
+        // setBundlePartNums(generateBundleRows(ids));
     }
 
     const onClearClick = () => {
         setPartNums([]);
-        setBundlePartNums([]);
+        // setBundlePartNums([]);
         dispatch(onClearSolutionIds());
     }
 
@@ -45,6 +50,23 @@ export const PartNumBlock: React.FC = () => {
             </span>
         </div>
 
+const items = List.of<ToggleButtonItem>(
+    {
+        id: 'local',
+        text: 'Local',
+        isActive: true,
+        onClick: () => {}
+    },
+    {
+        id: 'orion',
+        text: 'Orion',
+        isActive: false,
+        isDisabled: true,
+        onClick: () => {}
+    },
+);
+    const toggle = <ToggleButton items={items}/>
+
     const buttonPanel =
         <div className='part-number-block-button-panel'>
             <div id='generate' className='part-number-block-button'>
@@ -60,7 +82,7 @@ export const PartNumBlock: React.FC = () => {
                         onClick={()=>{onClearClick()}}/>
             </div>
             <div id='import' className='part-number-block-button'>
-                <Button text='Impor'
+                <Button text='Import'
                         size={ButtonParams.Size.MEDIUM}
                         isFullWidth={true}
                         onClick={()=>{onImport()}}/>
@@ -76,6 +98,7 @@ export const PartNumBlock: React.FC = () => {
     const header =
         <div className='part-number-block-header'>
             {headerLeft}
+            {toggle}
             <div className='part-number-block-header-right'>
                 {buttonPanel}
             </div>
@@ -84,8 +107,7 @@ export const PartNumBlock: React.FC = () => {
     return (
         <div className='part-number-block'>
             {header}
-            <PartNumTab partNumRows={partNums}
-                        bundleRows={bundlePartNums}/>
+            <PartNumTable rows={partNums}/>
         </div>
     )
 }

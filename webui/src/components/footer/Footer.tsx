@@ -1,7 +1,7 @@
-import './styles/footer.scss';
 import React from 'react';
 
-import spirentLogo from '../../icons/Spirent_Logo.svg';
+import spirentLogo from 'icons/Spirent_Logo.svg';
+import './styles/footer.scss';
 
 export const Footer: React.FC = () => {
     const renderLogo =

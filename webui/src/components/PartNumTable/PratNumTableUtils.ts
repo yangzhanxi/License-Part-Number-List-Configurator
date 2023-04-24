@@ -1,7 +1,5 @@
 import {
-    TableNativeRow,
-    Tooltip,
-    TableRow
+    TableNativeRow
 } from 'orion-rwc';
 
 
@@ -96,6 +94,27 @@ const solutionPartNumRows: TableNativeRow[] =
                     content: 'PCE-P CONTROLLER(PCE) PATH COMP ELEMENT PROTOCOL BASEPKG A -  Emulate PCE/Controller with multiple LSPs. May Require: BPK-1006A/B MPLS (RSVP)  and BPK-1004A/B Unicast Routing Base Package'
                 }
             ]
+        },
+        {
+            id: 'spk-1130',
+            cells: [
+                {
+                    value: 'SPK-1130',
+                    content: 'SPK-1130'
+                },
+                {
+                    value: 'PCE-P CONTROLLER AND CLIENT SOLUTION PACKAGE',
+                    content: 'PCE-P CONTROLLER AND CLIENT SOLUTION PACKAGE'
+                },
+                {
+                    value: '$54,000 ',
+                    content: '$54,000 '
+                },
+                {
+                    value: 'Require: BPK-1006B MPLS (RSVP-TE) and BPK-1004A/B Unicast Routing',
+                    content: 'Require: BPK-1006B MPLS (RSVP-TE) and BPK-1004A/B Unicast Routing'
+                }
+            ]
         }
     ]
 
@@ -132,6 +151,11 @@ export const generateTableRows = (ids: Set<string>) => {
                 partNumIds.add(partNumId)
             })}
         })
+    if (partNumIds.has('bpk-1316a') && partNumIds.has('bpk-1315a')) {
+        partNumIds.delete('bpk-1316a')
+        partNumIds.delete('bpk-1315a')
+        partNumIds.add('spk-1130')
+    }
 
     return solutionPartNumRows.filter(r => partNumIds.has(r.id!))
 }

@@ -1,6 +1,7 @@
-import { CollapsibleContent } from "orion-rwc";
 import React from 'react';
 import SVG from 'react-inlinesvg';
+
+import { CollapsibleContent } from "orion-rwc";
 
 import CollapsedIcon from 'icons/Collapsed.svg'
 import ExpandedIcon from 'icons/Expanded.svg'

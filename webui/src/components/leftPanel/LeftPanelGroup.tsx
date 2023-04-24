@@ -1,11 +1,10 @@
-import React, {PureComponent} from 'react';
-import {CollapsibleContent} from 'orion-rwc';
+import React from 'react';
 import SVG from 'react-inlinesvg';
+import {CollapsibleContent} from 'orion-rwc';
 
+import CollapsedIcon from 'icons/Collapsed.svg';
+import ExpandedIcon from 'icons/Expanded.svg';
 import './styles/left-panel-group.css';
-
-import CollapsedIcon from '../../icons/Collapsed.svg'
-import ExpandedIcon from '../../icons/Expanded.svg'
 
 export const LeftPanelGroup: React.FC<{
     children: React.ReactNode;

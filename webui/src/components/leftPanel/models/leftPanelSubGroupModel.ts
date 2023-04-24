@@ -2,7 +2,6 @@ import {List, Record} from 'immutable';
 
 import {LeftPanelGroupItemModel} from './leftPanelGroupItemModel';
 
-
 const LeftPanelSubgroupRecord = Record({
     id: '',
     name: '',
